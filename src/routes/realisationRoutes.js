@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const verifyToken = require("../middlewares/authMiddleware");
 
 const {
     getAllRealisations,
@@ -11,24 +12,24 @@ const {
 } = require("../controllers/realisationController");
 
 
-// Récupérer toutes les réalisations
+// Récupérer toutes les réalisations (public)
 router.get("/", getAllRealisations);
 
 
-// Récupérer une réalisation par ID
+// Récupérer une réalisation par ID (public)
 router.get("/:id", getRealisationById);
 
 
-// Ajouter une réalisation
-router.post("/", createRealisation);
+// Ajouter une réalisation (admin uniquement)
+router.post("/", verifyToken, createRealisation);
 
 
-// Modifier une réalisation
-router.put("/:id", updateRealisation);
+// Modifier une réalisation (admin uniquement)
+router.put("/:id", verifyToken, updateRealisation);
 
 
-// Supprimer une réalisation
-router.delete("/:id", deleteRealisation);
+// Supprimer une réalisation (admin uniquement)
+router.delete("/:id", verifyToken, deleteRealisation);
 
 
 module.exports = router;

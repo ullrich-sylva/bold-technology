@@ -1,8 +1,5 @@
 const db = require("../config/database");
 
-// Au lieu de "../middlewares/authMiddleware"
-const verifyToken = require("../middlewares/authMiddleware");
-const upload = require("../middlewares/uploadMiddleware");
 // ==========================================
 // AFFICHER TOUTES LES ACTUALITES
 // GET /api/actualites

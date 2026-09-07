@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOLD Technology - Contact</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-logo">BOLD <span>Technology</span></h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="realisations.html">Réalisations</a></li>
+                <li><a href="actualites.html">Actualités</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- En-tête de page -->
+    <section class="page-header">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <p>Nous sommes à votre disposition pour tout projet ou question</p>
+        </div>
+    </section>
+
+    <!-- Formulaire de contact -->
+    <section class="section">
+        <div class="container" style="max-width: 700px;">
+            <div class="card">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nom">Nom complet *</label>
+                        <input type="text" id="nom" required placeholder="Jean Dupont">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse email *</label>
+                        <input type="email" id="email" required placeholder="jean@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" id="telephone" placeholder="+225 07 00 00 00 00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type_demande">Type de demande</label>
+                        <select id="type_demande">
+                            <option value="contact">Contact général</option>
+                            <option value="devis">Demande de devis</option>
+                            <option value="partenariat">Partenariat</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sujet">Sujet</label>
+                        <input type="text" id="sujet" placeholder="Objet de votre message">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" rows="5" required placeholder="Décrivez votre projet ou votre demande..."></textarea>
+                    </div>
+
+                    <button type="submit" id="btnSubmit">Envoyer le message</button>
+                    <p id="formMessage" style="margin-top:1rem; text-align:center;"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 BOLD Technology. Tous droits réservés.</p>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

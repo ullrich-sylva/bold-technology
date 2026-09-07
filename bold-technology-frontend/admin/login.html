@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOLD Technology - Connexion Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-dark">
+
+    <div class="login-container">
+        <h2>Connexion Administration</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Adresse Email</label>
+                <input type="email" id="email" required placeholder="admin@boldtechnology.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" required placeholder="••••••••">
+            </div>
+
+            <button type="submit" id="btnSubmit">Se connecter</button>
+            <p id="errorMessage" class="error"></p>
+        </form>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

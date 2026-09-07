@@ -12,7 +12,16 @@ const actualiteRoutes = require("./routes/actualiteRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const authRoutes = require("./routes/authRoutes");
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "http://localhost:5000",
+        "http://127.0.0.1:5500", // Live Server VS Code
+        "http://localhost:5500"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,7 +31,7 @@ app.use("/api/realisations", realisationRoutes);
 app.use("/api/actualites", actualiteRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Route de test
 app.get("/", (req, res) => {

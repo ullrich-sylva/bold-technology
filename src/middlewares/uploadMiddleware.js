@@ -1,10 +1,13 @@
 const multer = require("multer");
 const path = require("path");
 
+// Dossier uploads/ à la racine du projet
+const uploadDir = path.join(__dirname, "../../uploads");
+
 // Configuration du stockage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "uploads/"); // Les images seront sauvegardées dans ce dossier
+        cb(null, uploadDir); // Chemin absolu — fiable quel que soit le répertoire de lancement
     },
     filename: (req, file, cb) => {
         // Renommer le fichier pour éviter les doublons (ex: 1700000000000-image.jpg)

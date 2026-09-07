@@ -1,0 +1,418 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+}
+
+/* Page Login */
+.bg-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: #1e293b;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem;
+}
+
+.login-container h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #38bdf8;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    background-color: #0f172a;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #0369a1;
+}
+
+.error {
+    color: #f87171;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Dashboard Layout */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1e293b;
+    padding: 2rem 1rem;
+}
+
+.sidebar h3 {
+    color: #38bdf8;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.sidebar nav button {
+    background: transparent;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    color: #94a3b8;
+}
+
+.sidebar nav button:hover, .sidebar nav button.active {
+    background-color: #334155;
+    color: #fff;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: #1e293b;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+/* Items List */
+.item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0f172a;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.item-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.btn-danger {
+    background-color: #dc2626;
+    width: auto;
+    padding: 0.5rem 1rem;
+}
+
+.btn-danger:hover {
+    background-color: #b91c1c;
+}
+
+/* =============================================
+   SITE PUBLIC — Navigation
+============================================= */
+
+.navbar {
+    background-color: #1e293b;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    color: #f8fafc;
+}
+
+.nav-logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #38bdf8;
+}
+
+/* =============================================
+   SITE PUBLIC — Hero
+============================================= */
+
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    color: #f8fafc;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #0284c7;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    width: auto;
+}
+
+.btn-primary:hover {
+    background-color: #0369a1;
+}
+
+/* =============================================
+   SITE PUBLIC — Sections & Cards
+============================================= */
+
+.section {
+    padding: 4rem 2rem;
+}
+
+.section-dark {
+    background-color: #1e293b;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #f8fafc;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.public-card {
+    background-color: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.section-dark .public-card {
+    background-color: #0f172a;
+}
+
+.public-card:hover {
+    transform: translateY(-4px);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-img-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #334155, #1e3a5f);
+}
+
+.card-body {
+    padding: 1.2rem;
+}
+
+.card-body h3 {
+    color: #f8fafc;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-date {
+    font-size: 0.8rem;
+    color: #38bdf8;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.card-meta {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.4rem;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+}
+
+.loading-text,
+.empty-text {
+    color: #64748b;
+    text-align: center;
+    padding: 2rem;
+}
+
+.error-text {
+    color: #f87171;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* =============================================
+   SITE PUBLIC — En-tête de page
+============================================= */
+
+.page-header {
+    background-color: #1e293b;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid #334155;
+}
+
+.page-header h2 {
+    font-size: 2rem;
+    color: #38bdf8;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    color: #94a3b8;
+}
+
+/* =============================================
+   SITE PUBLIC — Contact (select)
+============================================= */
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    background-color: #0f172a;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
+
+/* =============================================
+   SITE PUBLIC — Footer
+============================================= */
+
+.footer {
+    background-color: #1e293b;
+    text-align: center;
+    padding: 1.5rem;
+    color: #64748b;
+    font-size: 0.85rem;
+    border-top: 1px solid #334155;
+}

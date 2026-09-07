@@ -1,0 +1,24 @@
+﻿# Dépendances
+node_modules/
+
+# Variables d'environnement — NE JAMAIS COMMITER
+.env
+.env.*
+
+# Fichiers uploadés par les utilisateurs
+uploads/
+
+# Fichier de génération de mot de passe
+generatePasseword.js
+
+# Logs
+*.log
+npm-debug.log*
+
+# Éditeurs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
