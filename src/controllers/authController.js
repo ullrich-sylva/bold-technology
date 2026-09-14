@@ -35,25 +35,21 @@ const login = (req, res) => {
         }
 
 
-        // Vérifier si l'administrateur existe
-        if (results.length === 0) {
-            return res.status(401).json({
-                message: "Email ou mot de passe incorrect"
-            });
-        }
+        const administrateur = results[0] || null;
+
+        // Hash factice utilisé quand l'admin n'existe pas, pour que bcrypt.compare
+        // prenne toujours le même temps qu'un admin existe ou non (évite la fuite de timing)
+        const DUMMY_HASH = "$2b$10$CwTycUXWue0Thq9StjUM0uJ8Cad9xkbXvNfp1sK.7NlHKqCXhkFxG";
 
 
-        const administrateur = results[0];
-
-
-        // Comparer le mot de passe
+        // Comparer le mot de passe (toujours exécuté, même si l'admin n'existe pas)
         const motDePasseCorrect = await bcrypt.compare(
             mot_de_passe,
-            administrateur.mot_de_passe
+            administrateur ? administrateur.mot_de_passe : DUMMY_HASH
         );
 
 
-        if (!motDePasseCorrect) {
+        if (!administrateur || !motDePasseCorrect) {
             return res.status(401).json({
                 message: "Email ou mot de passe incorrect"
             });

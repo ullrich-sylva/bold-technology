@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const upload = require("../middlewares/uploadMiddleware");
+const { uploadImage } = require("../middlewares/uploadMiddleware");
 const verifyToken = require("../middlewares/authMiddleware");
 
 
@@ -18,9 +18,9 @@ router.get("/", getAllActualites);
 
 router.get("/:id", getActualiteById);
 
-router.post("/", verifyToken, upload.single("image"), createActualite);
+router.post("/", verifyToken, uploadImage.single("image"), createActualite);
 
-router.put("/:id", verifyToken, upload.single("image"), updateActualite);
+router.put("/:id", verifyToken, uploadImage.single("image"), updateActualite);
 
 router.delete("/:id", verifyToken, deleteActualite);
 

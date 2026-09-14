@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const rateLimit = require("express-rate-limit");
 const verifyToken = require("../middlewares/authMiddleware");
 
 const {
@@ -12,8 +13,16 @@ const {
 } = require("../controllers/messageController");
 
 
+// Limite le formulaire de contact public : 5 messages max par IP par heure
+const contactLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 5,
+    message: { message: "Trop de messages envoyés, réessayez plus tard." }
+});
+
+
 // Envoyer un nouveau message (public — formulaire de contact)
-router.post("/", createMessage);
+router.post("/", contactLimiter, createMessage);
 
 
 // Récupérer tous les messages (admin uniquement)

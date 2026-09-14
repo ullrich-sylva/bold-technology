@@ -1,5 +1,8 @@
 const db = require("../config/database");
 
+// Regex simple, suffisante pour valider un format d'email sans dépendance externe
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
 // ==========================================
 // RECUPERER TOUS LES MESSAGES
@@ -82,6 +85,34 @@ const createMessage = (req, res) => {
     if (!nom || !email || !message) {
         return res.status(400).json({
             message: "Le nom, l'email et le message sont obligatoires"
+        });
+    }
+
+
+    // Validation du format email
+    if (!EMAIL_REGEX.test(email)) {
+        return res.status(400).json({
+            message: "Format d'email invalide"
+        });
+    }
+
+
+    // Limites de longueur pour éviter le spam volumineux ou les abus de stockage
+    if (nom.length > 100) {
+        return res.status(400).json({
+            message: "Le nom ne doit pas dépasser 100 caractères"
+        });
+    }
+
+    if (sujet && sujet.length > 200) {
+        return res.status(400).json({
+            message: "Le sujet ne doit pas dépasser 200 caractères"
+        });
+    }
+
+    if (message.length > 5000) {
+        return res.status(400).json({
+            message: "Le message ne doit pas dépasser 5000 caractères"
         });
     }
 
