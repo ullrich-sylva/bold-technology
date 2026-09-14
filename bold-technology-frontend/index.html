@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOLD Technology - Accueil</title>
     <!-- FontAwesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,9 +23,9 @@
                 <li><a href="#about">À propos</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#realisations">Réalisations</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="contact.html" class="btn-devis"><i class="fa-regular fa-paper-plane"></i> Devis</a>
+            <a href="#contact" class="btn-devis"><i class="fa-regular fa-paper-plane"></i> Devis</a>
         </div>
     </nav>
 
@@ -43,7 +43,7 @@
                     BOLD TECHNOLOGY AND ENGINEERING SARL est votre partenaire de confiance pour les réseaux informatiques, la maintenance, la vidéosurveillance, l'énergie solaire et le cloud computing.
                 </p>
                 <div class="hero-buttons">
-                    <a href="contact.html" class="btn-devis btn-lg"><i class="fa-regular fa-paper-plane"></i> Demander un devis</a>
+                    <a href="#contact" class="btn-devis btn-lg"><i class="fa-regular fa-paper-plane"></i> Demander un devis</a>
                     <a href="#services" class="btn-outline btn-lg"><i class="fa-solid fa-arrow-right"></i> Nos services</a>
                 </div>
             </div>
@@ -214,9 +214,60 @@
     <a href="#" class="btn-top"><i class="fa-solid fa-arrow-up"></i></a>
 
     <!-- Footer -->
-    <footer style="background-color: var(--white); text-align: center; padding: 2rem; border-top: 1px solid var(--border); margin-top: 2rem;">
-        <p style="color: var(--text); font-weight: 500;">&copy; 2026 BOLD TECHNOLOGY AND ENGINEERING SARL. Tous droits réservés.</p>
-    </footer>
+     <!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="img/logo.png" alt="Bold Technology & Engineering">
+                <p>Votre partenaire technologique de confiance au Cameroun. Réseaux, sécurité, énergie solaire et solutions cloud pour les entreprises.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#about">À propos</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="realisations.html">Réalisations</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="index.html#services">Réseaux Informatiques</a></li>
+                    <li><a href="index.html#services">Maintenance</a></li>
+                    <li><a href="index.html#services">Vidéosurveillance</a></li>
+                    <li><a href="index.html#services">Énergie Solaire</a></li>
+                    <li><a href="index.html#services">Cloud Computing</a></li>
+                    <li><a href="index.html#services">Gestion de Flotte</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-newsletter">
+                <h4>Restez informé</h4>
+                <p>Recevez nos actualités et offres spéciales directement dans votre boîte mail.</p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Votre email" required>
+                    <button type="submit" aria-label="S'abonner"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2020 – 2026 <strong>BOLD TECHNOLOGY AND ENGINEERING SARL.</strong> Tous droits réservés.</p>
+            <p>Fondée par OMAM BISSECK CHAMBERLAIN — Douala, Cameroun</p>
+        </div>
+    </div>
+</footer>
 
     <!-- JS Scripts -->
     <script src="js/config.js"></script>

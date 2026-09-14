@@ -11,55 +11,161 @@
     <div class="dashboard-layout">
         <!-- Barre latérale -->
         <aside class="sidebar">
-            <h3>BOLD Admin</h3>
+            <!-- Entête avec Logo -->
+            <div class="sidebar-header">
+                <img src="img/logo.png" alt="Logo Bold" class="dashboard-logo">
+                <h3>BOLD Admin</h3>
+            </div>
+
+            <!-- Navigation principale -->
             <nav>
-                <button class="active">Actualités</button>
-                <button id="btnLogout" class="btn-danger" style="margin-top: 3rem;">Déconnexion</button>
+                <button class="nav-btn active" data-section="actualites">Actualités</button>
+                <button class="nav-btn" data-section="realisations">Réalisations</button>
+                <button class="nav-btn" data-section="messages">Messages</button>
             </nav>
+
+            <!-- Bouton déconnexion au bas de la sidebar -->
+            <button id="btnLogout" class="btn-logout">Déconnexion</button>
         </aside>
 
         <!-- Contenu principal -->
         <main class="main-content">
-            <div class="header-actions">
-                <h1>Gestion des Actualités</h1>
-            </div>
 
-            <!-- Formulaire d'ajout -->
-            <div class="card">
-                <h2>Ajouter une Actualité</h2>
-                <form id="actualiteForm">
-                    <div class="form-group">
-                        <label for="titre">Titre</label>
-                        <input type="text" id="titre" required placeholder="Titre de l'actualité">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contenu">Contenu</label>
-                        <textarea id="contenu" rows="4" required placeholder="Rédigez l'article..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="date_publication">Date de publication</label>
-                        <input type="date" id="date_publication" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="image">Image d'illustration</label>
-                        <input type="file" id="image" accept="image/*">
-                    </div>
-
-                    <button type="submit">Publier l'actualité</button>
-                    <p id="formMessage"></p>
-                </form>
-            </div>
-
-            <!-- Liste des articles -->
-            <div class="card">
-                <h2>Actualités existantes</h2>
-                <div id="actualitesList">
-                    <p>Chargement des actualités...</p>
+            <!-- ============ SECTION ACTUALITÉS ============ -->
+            <section id="section-actualites" class="admin-section">
+                <div class="header-actions">
+                    <h1>Gestion des Actualités</h1>
                 </div>
-            </div>
+
+                <div class="card">
+                    <h2 id="actualiteFormTitle">Ajouter une Actualité</h2>
+                    <form id="actualiteForm">
+                        <div class="form-group">
+                            <label for="titre">Titre</label>
+                            <input type="text" id="titre" required placeholder="Titre de l'actualité">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contenu">Contenu</label>
+                            <textarea id="contenu" rows="4" required placeholder="Rédigez l'article..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date_publication">Date de publication</label>
+                            <input type="date" id="date_publication" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Image d'illustration <small style="color: #94a3b8;">(laisser vide pour conserver l'actuelle)</small></label>
+                            <input type="file" id="image" accept="image/*">
+                        </div>
+
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <button type="submit" id="actualiteSubmitBtn">Publier l'actualité</button>
+                            <button type="button" id="cancelActualiteBtn" class="btn-secondary" style="display: none;">Annuler</button>
+                        </div>
+                        <p id="formMessage"></p>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Actualités existantes</h2>
+                    <div id="actualitesList">
+                        <p>Chargement des actualités...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION RÉALISATIONS ============ -->
+            <section id="section-realisations" class="admin-section" style="display:none;">
+                <div class="header-actions">
+                    <h1>Gestion des Réalisations</h1>
+                </div>
+
+                <div class="card">
+                    <h2 id="realisationFormTitle">Ajouter une Réalisation</h2>
+                    <form id="realisationForm">
+                        <div class="form-group">
+                            <label for="r_titre">Titre</label>
+                            <input type="text" id="r_titre" required placeholder="Titre de la réalisation">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r_description">Description</label>
+                            <textarea id="r_description" rows="4" required placeholder="Décrivez le projet..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r_client">Client</label>
+                            <input type="text" id="r_client" placeholder="Nom du client (optionnel)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r_date_realisation">Date de réalisation</label>
+                            <input type="date" id="r_date_realisation">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r_photo">Photo <small style="color: #94a3b8;">(laisser vide pour conserver l'actuelle)</small></label>
+                            <input type="file" id="r_photo" accept="image/*">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r_video">Vidéo (optionnel) <small style="color: #94a3b8;">(laisser vide pour conserver l'actuelle)</small></label>
+                            <input type="file" id="r_video" accept="video/*">
+                        </div>
+
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <button type="submit" id="realisationSubmitBtn">Publier la réalisation</button>
+                            <button type="button" id="cancelRealisationBtn" class="btn-secondary" style="display: none;">Annuler</button>
+                        </div>
+                        <p id="realisationFormMessage"></p>
+                    </form>
+                </div>
+                <div class="card">
+                    <h2>Réalisations existantes</h2>
+                    <div id="realisationsList">
+                        <p>Chargement des réalisations...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SECTION MESSAGES ============ -->
+            <section id="section-messages" class="admin-section" style="display:none;">
+                <div class="header-actions">
+                    <h1>Messages reçus</h1>
+                </div>
+
+                <div class="card">
+                    <div id="messagesList">
+                        <p>Chargement des messages...</p>
+                    </div>
+                </div>
+
+                <!-- Modale de réponse au message -->
+                <div id="replyModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <h3>Répondre à <span id="replyRecipient"></span></h3>
+                        <form id="replyForm">
+                            <input type="hidden" id="replyMessageId">
+                            <div class="form-group">
+                                <label for="replySubject">Sujet</label>
+                                <input type="text" id="replySubject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="replyBody">Message</label>
+                                <textarea id="replyBody" rows="5" required placeholder="Votre réponse..."></textarea>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                                <button type="button" class="btn-secondary" onclick="closeReplyModal()">Annuler</button>
+                                <button type="submit" style="background-color: #6366f1;">Envoyer l'email</button>
+                            </div>
+                            <p id="replyFormMessage"></p>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
         </main>
     </div>
 

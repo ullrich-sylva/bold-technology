@@ -10,88 +10,182 @@
 <body>
 
     <!-- Navigation -->
-        <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-                    <div class="nav-logo">
-            <a href="index.html" style="display: flex; align-items: center;">
-                <img src="img/logo.png" alt="Bold Technology & Engineering" style="height: 50px; object-fit: contain; mix-blend-mode: multiply;">
-            </a>
-        </div>
+            <div class="nav-logo">
+                <a href="index.html" style="display: flex; align-items: center;">
+                    <img src="img/logo.png" alt="Bold Technology & Engineering">
+                </a>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="index.html#about">À propos</a></li>
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="realisations.html">Réalisations</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
             <a href="contact.html" class="btn-devis"><i class="fa-regular fa-paper-plane"></i> Devis</a>
         </div>
     </nav>
 
-    <!-- En-tête de page -->
-    <section class="page-header">
-        <div class="container">
-            <h2>Contactez-nous</h2>
-            <p>Nous sommes à votre disposition pour tout projet ou question</p>
-        </div>
-    </section>
+    <!-- Section Contact -->
+    <section class="contact-section">
+        <div class="contact-grid">
 
-    <!-- Formulaire de contact -->
-    <section class="section">
-        <div class="container" style="max-width: 700px;">
-            <div class="card">
+            <!-- Colonne infos -->
+            <div class="contact-info">
+                <span class="badge"><i class="fa-solid fa-envelope"></i> CONTACTEZ-NOUS</span>
+                <h1>Parlons de votre <span class="text-primary">projet</span></h1>
+                <p>Vous avez un projet technologique ? Besoin d'un devis pour une installation réseau, de la vidéosurveillance ou de l'énergie solaire ? Contactez-nous dès maintenant.</p>
+
+                <div class="contact-detail-card">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <h4>Adresse</h4>
+                        <p>Douala, Cameroun</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail-card highlight">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <h4>Téléphone</h4>
+                        <p>+237 678 893 777</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail-card">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>contact@boldtechnology.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail-card">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div>
+                        <h4>Horaires</h4>
+                        <p>Lun – Ven : 8h00 – 17h00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne formulaire -->
+            <div class="quote-form-card">
+                <h2>Demander un devis gratuit</h2>
+                <p>Remplissez le formulaire ci-dessous et nous vous répondrons sous 24h.</p>
+
+                <div id="formMessage" class="form-message"></div>
+
                 <form id="contactForm">
-                    <div class="form-group">
-                        <label for="nom">Nom complet *</label>
-                        <input type="text" id="nom" required placeholder="Jean Dupont">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="nom">Nom complet *</label>
+                            <input type="text" id="nom" placeholder="Votre nom complet" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="votre@email.com" required>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">Adresse email *</label>
-                        <input type="email" id="email" required placeholder="jean@example.com">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" placeholder="+237 6XX XXX XXX">
+                        </div>
+                        <div class="form-field">
+                            <label for="type_demande">Service concerné</label>
+                            <select id="type_demande">
+                                <option value="contact">Sélectionnez un service</option>
+                                <option value="reseaux">Réseaux Informatiques</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="videosurveillance">Vidéosurveillance</option>
+                                <option value="solaire">Énergie Solaire</option>
+                                <option value="cloud">Cloud Computing</option>
+                                <option value="flotte">Gestion de Flotte</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="telephone">Téléphone</label>
-                        <input type="tel" id="telephone" placeholder="+225 07 00 00 00 00">
+                    <!-- Champ conservé mais masqué : main.js le lit toujours pour construire la requête -->
+                    <input type="hidden" id="sujet" value="">
+
+                    <div class="form-field" style="margin-bottom: 1.5rem;">
+                        <label for="message">Message / Description du projet *</label>
+                        <textarea id="message" placeholder="Décrivez votre projet ou votre besoin..." required></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="type_demande">Type de demande</label>
-                        <select id="type_demande">
-                            <option value="contact">Contact général</option>
-                            <option value="devis">Demande de devis</option>
-                            <option value="partenariat">Partenariat</option>
-                            <option value="autre">Autre</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sujet">Sujet</label>
-                        <input type="text" id="sujet" placeholder="Objet de votre message">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" rows="5" required placeholder="Décrivez votre projet ou votre demande..."></textarea>
-                    </div>
-
-                    <button type="submit" id="btnSubmit">Envoyer le message</button>
-                    <p id="formMessage" style="margin-top:1rem; text-align:center;"></p>
+                    <button type="submit" id="btnSubmit" class="btn-submit-devis">
+                        <i class="fa-regular fa-paper-plane"></i> Envoyer la demande
+                    </button>
                 </form>
             </div>
+
         </div>
     </section>
 
+    <!-- Bouton retour en haut -->
+    <a href="#" class="btn-top"><i class="fa-solid fa-arrow-up"></i></a>
+
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2026 BOLD Technology. Tous droits réservés.</p>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="img/logo.png" alt="Bold Technology & Engineering">
+                    <p>Votre partenaire technologique de confiance au Cameroun. Réseaux, sécurité, énergie solaire et solutions cloud pour les entreprises.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#about">À propos</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="realisations.html">Réalisations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">Réseaux Informatiques</a></li>
+                        <li><a href="index.html#services">Maintenance</a></li>
+                        <li><a href="index.html#services">Vidéosurveillance</a></li>
+                        <li><a href="index.html#services">Énergie Solaire</a></li>
+                        <li><a href="index.html#services">Cloud Computing</a></li>
+                        <li><a href="index.html#services">Gestion de Flotte</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-newsletter">
+                    <h4>Restez informé</h4>
+                    <p>Recevez nos actualités et offres spéciales directement dans votre boîte mail.</p>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit" aria-label="S'abonner"><i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2020 – 2026 <strong>BOLD TECHNOLOGY AND ENGINEERING SARL.</strong> Tous droits réservés.</p>
+                <p>Fondée par OMAM BISSECK CHAMBERLAIN — Douala, Cameroun</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- JS Scripts -->
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
