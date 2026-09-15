@@ -46,7 +46,7 @@ const uploadVideo = multer({
 // Middleware de vérification POST-upload : lit les vrais octets du fichier
 // À utiliser APRÈS upload.single()/array(), avant de répondre au client
 async function verifyRealFileType(req, res, next) {
-    const files = req.files || (req.file ? [req.file] : []);
+    const files = req.files ? Object.values(req.files).flat() : (req.file ? [req.file] : []);
     if (files.length === 0) return next();
 
     try {
@@ -83,5 +83,5 @@ const uploadRealisationMedia = multer({
 
 module.exports = { uploadImage, uploadVideo, uploadRealisationMedia, verifyRealFileType };
 
-module.exports = { uploadImage, uploadVideo, verifyRealFileType };
+
 

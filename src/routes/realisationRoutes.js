@@ -2,6 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const verifyToken = require("../middlewares/authMiddleware");
+const { uploadRealisationMedia, verifyRealFileType } = require("../middlewares/uploadMiddleware");
 
 const {
     getAllRealisations,
@@ -20,12 +21,12 @@ router.get("/", getAllRealisations);
 router.get("/:id", getRealisationById);
 
 
-// Ajouter une réalisation (admin uniquement)
-router.post("/", verifyToken, createRealisation);
+// Ajouter une réalisation (admin uniquement) — upload photo + vidéo + vérification magic bytes
+router.post("/", verifyToken, uploadRealisationMedia, verifyRealFileType, createRealisation);
 
 
 // Modifier une réalisation (admin uniquement)
-router.put("/:id", verifyToken, updateRealisation);
+router.put("/:id", verifyToken, uploadRealisationMedia, verifyRealFileType, updateRealisation);
 
 
 // Supprimer une réalisation (admin uniquement)

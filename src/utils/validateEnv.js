@@ -2,9 +2,9 @@ const REQUIRED_ENV_VARS = [
     "DB_HOST",
     "DB_USER",
     "DB_NAME",
-    "JWT_SECRET",
-    "PORT"
-    // DB_PASSWORD retiré de la liste stricte : une valeur vide est valide en dev local
+    "JWT_SECRET"
+    // DB_PASSWORD a une vérification séparée pour accepter une valeur vide en dev
+    // PORT a une valeur de repli par défaut (5000) dans server.js
 ];
 
 function validateEnv() {

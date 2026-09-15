@@ -117,6 +117,12 @@ const createMessage = (req, res) => {
     }
 
 
+    const TYPE_DEMANDES_AUTORISES = [
+        "contact", "devis", "reseaux", "maintenance", 
+        "videosurveillance", "solaire", "cloud", "flotte", "partenariat", "autre"
+    ];
+    const typeDemandeValide = TYPE_DEMANDES_AUTORISES.includes(type_demande) ? type_demande : "contact";
+
     const sql = `
         INSERT INTO messages
         (
@@ -138,7 +144,7 @@ const createMessage = (req, res) => {
             email,
             telephone || null,
             sujet || null,
-            type_demande || "contact",
+            typeDemandeValide,
             message
         ],
         (error, results) => {

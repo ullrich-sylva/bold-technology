@@ -38,6 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
             const errorMessage = document.getElementById("errorMessage");
+            const btnSubmit = document.getElementById("btnSubmit");
+
+            if (btnSubmit) {
+                btnSubmit.disabled = true;
+                btnSubmit.textContent = "Connexion en cours...";
+            }
+            if (errorMessage) errorMessage.textContent = "";
 
             try {
                 const response = await fetch(`${API_URL}/auth/login`, {
@@ -52,7 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem("adminToken", data.token);
                 window.location.href = "dashboard.html";
             } catch (error) {
-                errorMessage.textContent = error.message;
+                if (errorMessage) errorMessage.textContent = error.message;
+            } finally {
+                if (btnSubmit) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = "Se connecter";
+                }
             }
         });
     }
@@ -105,6 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
             actualiteForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
                 const formMessage = document.getElementById("formMessage");
+                const submitBtn = document.getElementById("actualiteSubmitBtn");
+                const isEditing = editingActualiteId !== null;
+
                 const formData = new FormData();
                 formData.append("titre", document.getElementById("titre").value);
                 formData.append("contenu", document.getElementById("contenu").value);
@@ -115,9 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     formData.append("image", imageInput.files[0]);
                 }
 
-                const isEditing = editingActualiteId !== null;
                 const url = isEditing ? `${API_URL}/actualites/${editingActualiteId}` : `${API_URL}/actualites`;
                 const method = isEditing ? "PUT" : "POST";
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Enregistrement en cours...";
+                }
 
                 try {
                     const response = await fetch(url, {
@@ -139,6 +158,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 } catch (error) {
                     formMessage.style.color = "#f87171";
                     formMessage.textContent = error.message;
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = isEditing ? "Enregistrer les modifications" : "Publier l'actualité";
+                    }
                 }
             });
 
@@ -156,6 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
             realisationForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
                 const formMessage = document.getElementById("realisationFormMessage");
+                const submitBtn = document.getElementById("realisationSubmitBtn");
+                const isEditing = editingRealisationId !== null;
+
                 const formData = new FormData();
                 formData.append("titre", document.getElementById("r_titre").value);
                 formData.append("description", document.getElementById("r_description").value);
@@ -172,9 +199,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     formData.append("video", videoInput.files[0]);
                 }
 
-                const isEditing = editingRealisationId !== null;
                 const url = isEditing ? `${API_URL}/realisations/${editingRealisationId}` : `${API_URL}/realisations`;
                 const method = isEditing ? "PUT" : "POST";
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Téléversement et enregistrement...";
+                }
 
                 try {
                     const response = await fetch(url, {
@@ -196,6 +227,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 } catch (error) {
                     formMessage.style.color = "#f87171";
                     formMessage.textContent = error.message;
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = isEditing ? "Enregistrer les modifications" : "Publier la réalisation";
+                    }
                 }
             });
 

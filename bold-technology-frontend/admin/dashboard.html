@@ -13,7 +13,7 @@
         <aside class="sidebar">
             <!-- Entête avec Logo -->
             <div class="sidebar-header">
-                <img src="img/logo.png" alt="Logo Bold" class="dashboard-logo">
+                <img src="../img/logo.png" alt="Logo Bold" class="dashboard-logo">
                 <h3>BOLD Admin</h3>
             </div>
 
@@ -139,29 +139,6 @@
                 <div class="card">
                     <div id="messagesList">
                         <p>Chargement des messages...</p>
-                    </div>
-                </div>
-
-                <!-- Modale de réponse au message -->
-                <div id="replyModal" class="modal" style="display: none;">
-                    <div class="modal-content">
-                        <h3>Répondre à <span id="replyRecipient"></span></h3>
-                        <form id="replyForm">
-                            <input type="hidden" id="replyMessageId">
-                            <div class="form-group">
-                                <label for="replySubject">Sujet</label>
-                                <input type="text" id="replySubject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="replyBody">Message</label>
-                                <textarea id="replyBody" rows="5" required placeholder="Votre réponse..."></textarea>
-                            </div>
-                            <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-                                <button type="button" class="btn-secondary" onclick="closeReplyModal()">Annuler</button>
-                                <button type="submit" style="background-color: #6366f1;">Envoyer l'email</button>
-                            </div>
-                            <p id="replyFormMessage"></p>
-                        </form>
                     </div>
                 </div>
             </section>

@@ -36,7 +36,12 @@ app.use("/api/realisations", realisationRoutes);
 app.use("/api/actualites", actualiteRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "../uploads"), {
+    setHeaders: (res) => {
+        // Bloque le MIME-sniffing : le navigateur doit respecter le Content-Type déclaré
+        res.setHeader("X-Content-Type-Options", "nosniff");
+    }
+}));
 
 // Route de test
 app.get("/", (req, res) => {

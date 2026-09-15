@@ -5,6 +5,16 @@ const SERVER_URL = typeof API_URL !== 'undefined' ? API_URL.replace('/api', '') 
 // UTILITAIRES
 // =============================================
 
+function escapeHTML(str) {
+    if (!str) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 function formatDate(dateStr) {
     return new Date(dateStr).toLocaleDateString('fr-FR', {
         year: 'numeric', month: 'long', day: 'numeric'
@@ -12,32 +22,34 @@ function formatDate(dateStr) {
 }
 
 function truncate(text, maxLength) {
-    maxLength = maxLength || 150;
+    maxLength = maxLength || 180;
     if (!text) return '';
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
 }
 
 function buildCard(item, type) {
+    var safeTitre = escapeHTML(item.titre);
     var imgHtml = item.image
-        ? '<img src="' + SERVER_URL + '/uploads/' + item.image + '" alt="' + item.titre + '" class="card-img">'
-        : '<div class="card-img-placeholder"></div>';
+        ? '<img src="' + SERVER_URL + '/uploads/' + encodeURIComponent(item.image) + '" alt="' + safeTitre + '" class="card-img" onerror="this.onerror=null;this.outerHTML=\'<div class=\\\'card-img-placeholder\\\'><i class=\\\'fa-solid fa-image\\\' style=\\\'font-size:2rem;color:var(--primary);opacity:0.6;\\\'></i></div>\';">'
+        : '<div class="card-img-placeholder"><i class="fa-solid fa-image" style="font-size:2rem;color:var(--primary);opacity:0.6;"></i></div>';
 
     var metaHtml = '';
     if (type === 'realisation') {
-        if (item.client) metaHtml += '<p class="card-meta">Client : ' + item.client + '</p>';
+        if (item.client) metaHtml += '<p class="card-meta">Client : ' + escapeHTML(item.client) + '</p>';
         if (item.date_realisation) metaHtml += '<span class="card-date">' + formatDate(item.date_realisation) + '</span>';
     } else if (type === 'actualite') {
         if (item.date_publication) metaHtml += '<span class="card-date">' + formatDate(item.date_publication) + '</span>';
     }
 
     var textContent = type === 'actualite' ? (item.contenu || '') : (item.description || '');
+    var safeText = escapeHTML(truncate(textContent, 200));
 
     return '<div class="public-card">' +
         imgHtml +
         '<div class="card-body">' +
         metaHtml +
-        '<h3>' + item.titre + '</h3>' +
-        '<p class="card-text">' + textContent + '</p>' +
+        '<h3>' + safeTitre + '</h3>' +
+        '<p class="card-text">' + safeText + '</p>' +
         '</div>' +
         '</div>';
 }
